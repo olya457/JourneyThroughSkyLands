@@ -1,4 +1,4 @@
-package com.journeythroughskylands
+package play.sky.jokes.city.online
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

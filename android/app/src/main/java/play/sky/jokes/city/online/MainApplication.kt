@@ -1,4 +1,4 @@
-package com.journeythroughskylands
+package play.sky.jokes.city.online
 
 import android.app.Application
 import com.facebook.react.PackageList
