@@ -1,19 +1,19 @@
 workflows:
   ios-workflow:
-    name: Horizons of River
+    name: Journey Through Sky Lands
     max_build_duration: 120
-    instance_type: mac_mini_m1
+    instance_type: mac_mini_m2
     integrations:
-      app_store_connect: HorizonsRiverAPIKeyNew
+      app_store_connect: Journey Through Sky Lands
     environment:
       ios_signing:
         distribution_type: app_store
-        bundle_identifier: com.HorizonsOfCreeRiver
+        bundle_identifier: com.ourneyhro.ughkyands
       vars:
-        BUNDLE_ID: com.HorizonsOfCreeRiver
-        XCODE_WORKSPACE: HorizonsOfCreeRiver.xcworkspace
-        XCODE_SCHEME: HorizonsOfCreeRiver
-        APP_STORE_APPLE_ID: 6748460440
+        BUNDLE_ID: com.ourneyhro.ughkyands
+        XCODE_WORKSPACE: JourneyThroughSkyLands.xcworkspace
+        XCODE_SCHEME: JourneyThroughSkyLands
+        APP_STORE_APPLE_ID: 6749012197
     scripts:
       - name: Install npm dependencies
         script: |
@@ -61,12 +61,12 @@ workflows:
         auth: integration
         submit_to_app_store: true
         release_type: MANUAL
-        copyright: Horizons of River 2025
+        copyright: LUIS MUSZALSKI
 
       email:
         recipients:
-          - your_email@example.com
-          - second_email@example.com
+          - chiuegpw8963@gmail.com
+          - chiuegpw8963@gmail.com
         notify:
           success: true
           failure: true
