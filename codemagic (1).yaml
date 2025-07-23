@@ -1,0 +1,72 @@
+workflows:
+  ios-workflow:
+    name: Journey Through Sky Lands
+    max_build_duration: 120
+    instance_type: mac_mini_m2
+    integrations:
+      app_store_connect: Journey Through Sky Lands
+    environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.ourneyhro.ughkyands
+      vars:
+        BUNDLE_ID: com.ourneyhro.ughkyands
+        XCODE_WORKSPACE: JourneyThroughSkyLands.xcworkspace
+        XCODE_SCHEME: JourneyThroughSkyLands
+        APP_STORE_APPLE_ID: 6749012197
+    scripts:
+      - name: Install npm dependencies
+        script: |
+          npm install
+
+      - name: Install CocoaPods dependencies
+        script: |
+          cd ios && pod install
+
+      - name: Set up provisioning profiles
+        script: |
+          xcode-project use-profiles
+
+      - name: Increment build number
+        script: |
+          cd ios
+          LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID")
+          echo "Latest build number: $LATEST_BUILD_NUMBER"
+          agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
+
+      - name: Build IPA for distribution
+        script: |
+          xcode-project build-ipa \
+            --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" \
+            --scheme "$XCODE_SCHEME"
+
+      - name: Check IPA before publishing
+        script: |
+          echo "IPA files in build/ios/ipa:"
+          ls -lh build/ios/ipa
+
+      - name: Extract possible ITMS errors
+        script: |
+          echo "Searching for ITMS errors in logs..."
+          grep -i "ITMS" /tmp/xcodebuild_logs/*.log || echo "No ITMS errors found"
+
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
+      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
+
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_app_store: true
+        release_type: MANUAL
+        copyright: LUIS MUSZALSKI
+
+      email:
+        recipients:
+          - chiuegpw8963@gmail.com
+          - chiuegpw8963@gmail.com
+        notify:
+          success: true
+          failure: true
