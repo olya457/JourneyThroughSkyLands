@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>2</string>
+	<string>3</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 
@@ -33,9 +33,6 @@
 
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app uses your location to show nearby landmarks and improve your experience.</string>
-
-	<key>NSUserTrackingUsageDescription</key>
-	<string>This identifier will be used to deliver personalized content and improve app performance.</string>
 
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app needs access to your photo library to share or save content.</string>
