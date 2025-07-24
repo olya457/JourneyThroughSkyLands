@@ -55,7 +55,7 @@ export default function VerticalNavPanel() {
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
-    right: 0,
+    right: -17,
     top: height * 0.35,
     width: 80,
     height: 360,
@@ -65,8 +65,8 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   circleButton: {
-    width: 64,
-    height: 64,
+    width: 54,
+    height: 54,
     borderRadius: 37,
     justifyContent: 'center',
     alignItems: 'center',
@@ -78,8 +78,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   icon: {
-    width: 34,
-    height: 34,
+    width: 24,
+    height: 24,
+    
   },
   inactiveIcon: {
     tintColor: 'white',

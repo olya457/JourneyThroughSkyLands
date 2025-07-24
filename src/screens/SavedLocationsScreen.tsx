@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     right: 0,
-    width: 90,
+    width: 60,
     height: height + 20,
     zIndex: 2,
   },
@@ -260,7 +260,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   transparentBox: {
-    width: 360,
+    width: 300,
     height: 550,
     backgroundColor: 'rgba(0, 0, 0, 0.3)',
     borderRadius: 12,
@@ -277,12 +277,12 @@ emptyText: {
 
   cardWrapper: {
     borderRadius: 12,
-    padding: 2,
+    padding: 8,
     marginBottom: 12,
     overflow: 'hidden',
   },
   card: {
-    width: 350,
+    width: 285,
     height: 200,
     backgroundColor: '#1e1e1e',
     borderRadius: 10,

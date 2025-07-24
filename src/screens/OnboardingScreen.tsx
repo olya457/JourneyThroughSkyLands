@@ -67,7 +67,7 @@ export default function OnboardingScreen({ navigation }: any) {
 
   const onboardingTexts = [
     "Hi, I'm your guide Liam. Together we'll discover the best parts of New Zealand - from volcanoes to fjords, from Maori legends to modern cities.",
-    'Save your favorite locations and travel in comfort. Everything you need',
+    'Save your favorite locations and travel in comfort. Everything you need.',
     'New Zealand is not only about landscapes, but also history, culture and incredible facts that will surprise even the most experienced traveler.',
   ];
 
@@ -279,7 +279,7 @@ const styles = StyleSheet.create({
   },
 
   rightContainer: {
-    width: 130,
+    width: 138,
     height: height,
     position: 'relative',
   },

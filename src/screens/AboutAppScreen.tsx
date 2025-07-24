@@ -296,7 +296,7 @@ const styles = StyleSheet.create({
  position: 'absolute',
  top: 0,
  right: 0,
- width: responsiveSize(90),
+ width: responsiveSize(60),
  height: height + responsiveSize(20),
  zIndex: 2,
  },
