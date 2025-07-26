@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: responsiveSize(20), 
     width: '100%',
-    height: responsiveSize(145), 
+    height: responsiveSize(135), 
     zIndex: 10,
   },
   webview: {

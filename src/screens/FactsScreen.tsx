@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'; 
+import React, { useState, useEffect, useRef } from 'react';
 import {
   View,
   Text,
@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   Share,
   Platform,
-  Animated, 
+  Animated,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import VerticalNavPanel from '../components/VerticalNavPanel';
@@ -34,7 +34,7 @@ const facts = [
   {
     title: 'Home of Middle-earth',
     description:
-    'Much of The Lord of the Rings was filmed in NZ. Hobbiton and Fiordland became iconic sets.',
+      'Much of The Lord of the Rings was filmed in NZ. Hobbiton and Fiordland became iconic sets.',
   },
   {
     title: 'The Bird That Can’t Fly',
@@ -76,12 +76,11 @@ const facts = [
 export default function FactsScreen() {
   const [index, setIndex] = useState(0);
 
-
   const headerAnim = useRef(new Animated.Value(-responsiveSize(100))).current;
   const navAnim = useRef(new Animated.Value(responsiveSize(100))).current;
 
-  const factCardAnimX = useRef(new Animated.Value(0)).current; 
-  const factCardAnimOpacity = useRef(new Animated.Value(1)).current; 
+  const factCardAnimX = useRef(new Animated.Value(0)).current;
+  const factCardAnimOpacity = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
     Animated.parallel([
@@ -101,35 +100,33 @@ export default function FactsScreen() {
   }, []);
 
   const handleNextFact = () => {
-   
     Animated.parallel([
       Animated.timing(factCardAnimX, {
-        toValue: -width, 
+        toValue: -width,
         duration: 300,
         useNativeDriver: true,
       }),
       Animated.timing(factCardAnimOpacity, {
-        toValue: 0, 
+        toValue: 0,
         duration: 300,
         useNativeDriver: true,
       }),
     ]).start(() => {
+      setIndex((prev) => (prev + 1) % facts.length);
+      factCardAnimX.setValue(width);
+      factCardAnimOpacity.setValue(0);
 
-      setIndex((prev) => (prev + 1) % facts.length); 
-      factCardAnimX.setValue(width); 
-      factCardAnimOpacity.setValue(0); 
-   
       Animated.parallel([
         Animated.timing(factCardAnimX, {
-          toValue: 0, 
+          toValue: 0,
           duration: 400,
           delay: 100,
           useNativeDriver: true,
         }),
         Animated.timing(factCardAnimOpacity, {
-          toValue: 1, 
+          toValue: 1,
           duration: 400,
-          delay: 100, 
+          delay: 100,
           useNativeDriver: true,
         }),
       ]).start();
@@ -230,13 +227,6 @@ export default function FactsScreen() {
       <Animated.View style={[styles.navWrapper, { transform: [{ translateX: navAnim }] }]}>
         <VerticalNavPanel />
       </Animated.View>
-
-      {}
-      <Image
-        source={require('../assets/union1.png')}
-        style={styles.unionImage}
-        resizeMode="stretch"
-      />
     </ImageBackground>
   );
 }
@@ -287,13 +277,14 @@ const styles = StyleSheet.create({
   mainContentArea: {
     flex: 1,
     justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    paddingLeft: responsiveSize(10),
+    alignItems: 'center', 
     paddingTop: responsiveSize(100),
     paddingBottom: responsiveSize(40),
   },
   contentRow: {
     zIndex: 1,
+    width: '100%',
+    alignItems: 'center', 
   },
   gradientBorder: {
     padding: responsiveSize(2),
@@ -318,7 +309,7 @@ const styles = StyleSheet.create({
     paddingRight: responsiveSize(40),
   },
   cardText: {
-    color: '#CCCCCC',
+    color: '#FFFFFF',
     fontSize: responsiveSize(14),
     lineHeight: responsiveSize(20),
   },
@@ -339,9 +330,10 @@ const styles = StyleSheet.create({
     width: responsiveSize(17),
     height: responsiveSize(17),
   },
-  buttonWrapper: {},
+  buttonWrapper: {
+  },
   button: {
-    width: responsiveSize(265),
+    width: responsiveSize(225),
     height: responsiveSize(66),
     borderRadius: responsiveSize(33),
     justifyContent: 'center',
@@ -360,13 +352,5 @@ const styles = StyleSheet.create({
     color: '#000000',
     fontSize: responsiveSize(16),
     fontWeight: '600',
-  },
-  unionImage: {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    width: responsiveSize(60),
-    height: height + responsiveSize(20),
-    zIndex: 2,
   },
 });
